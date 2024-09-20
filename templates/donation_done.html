@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donation Successful</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+            margin-top: 50px;
+        }
+        h1 {
+            color: #4CAF50;
+        }
+        p {
+            font-size: 18px;
+            color: #555;
+        }
+        .redirect-msg {
+            margin-top: 20px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Donation Successful!</h1>
+        <p>Thank you for your generosity.</p>
+        <p>An invoice has been mailed to <strong>{{ email }}</strong>.</p>
+        <p class="redirect-msg">You will be redirected to the homepage in <span id="countdown">10</span> seconds.</p>
+    </div>
+
+    <script>
+        // Set the redirection URL
+        var redirectUrl = "{% url 'Home' %}";  // Replace 'home' with your redirect URL name or use a hardcoded URL
+
+        // Countdown and redirect logic
+        var countdownElement = document.getElementById('countdown');
+        var countdownValue = 10;  // 10 seconds countdown
+
+        var countdownInterval = setInterval(function() {
+            countdownValue--;
+            countdownElement.textContent = countdownValue;
+
+            if (countdownValue <= 0) {
+                clearInterval(countdownInterval);
+                window.location.href = redirectUrl;
+            }
+        }, 1000);  // Update every second (1000 milliseconds)
+    </script>
+</body>
+</html>
