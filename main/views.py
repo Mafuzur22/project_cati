@@ -5,6 +5,7 @@ from django.template.loader import render_to_string, get_template
 from django.conf import settings
 from weasyprint import HTML
 from django.core.mail import EmailMessage
+from django.contrib import messages
 import os
 from io import BytesIO
 import uuid
@@ -24,6 +25,10 @@ def payment(request):
     usr_email = data.get('email')
     amount = data.get('amount')
     address = data.get('address')
+    address = str(address)
+    if int(amount) <= 0:
+      messages.error(request, "Please Donate more then 0BDT!")
+      return redirect("/donate")
     
     return redirect(sslcommerz_payment_gateway(request, name, amount, usr_email, address))
     

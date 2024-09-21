@@ -1,17 +1,17 @@
 from sslcommerz_lib import SSLCOMMERZ
 
 def sslcommerz_payment_gateway(request, name, amount, usr_email, address):
- 
-    
+
+
     store_auth = {'store_id': 'mfsof66ed859fde60f',
-            'store_pass': 'mfsof66ed859fde60f@ssl', 'issandbox': True} 
-            
+            'store_pass': 'mfsof66ed859fde60f@ssl', 'issandbox': True}
+
     sslcommez = SSLCOMMERZ(store_auth)
     post_body = {}
     post_body['total_amount'] = amount
     post_body['currency'] = "BDT"
     post_body['tran_id'] = 1234
-    post_body['success_url'] = 'http://127.0.0.1:8000/donationok'
+    post_body['success_url'] = 'https://mafuzur22.pythonanywhere.com/donationok'
     post_body['fail_url'] = 'http://donatehub.herokuapp.com/payment/faild/'
     post_body['cancel_url'] = 'http://donatehub.herokuapp.com/'
     post_body['emi_option'] = 0
