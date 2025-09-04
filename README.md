@@ -1,8 +1,3 @@
-<!-- Banner Image at the Top -->
-<p align="center">
-  <img src="assets/banner.png" alt="project_cati Banner" width="600"/>
-</p>
-
 # project_cati
 
 **A Django project for testing payment gateway integration and sending invoice emails.**
